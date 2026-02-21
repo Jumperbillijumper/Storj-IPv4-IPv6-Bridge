@@ -1,78 +1,96 @@
 # Storj IPv4-to-IPv6 Bridge (TCP & QUIC/UDP)
 
-[DE] Eine leistungsstarke Lösung, um Storj-Nodes hinter IPv6-Anschlüssen (DS-Lite) über einen IPv4-VPS erreichbar zu machen.  
-[EN] A powerful solution to make Storj nodes behind IPv6 connections (DS-Lite) accessible via an IPv4 VPS.
+[English Version](#english-version) | [Deutsche Version](#deutsche-version)
 
 ---
 
-## 💎 Support the Project / Unterstütze das Projekt
+<a name="english-version"></a>
+## English Version
 
-[DE] Um dieses Skript und zukünftige Entwicklungen zu unterstützen, kannst du deinen VPS über diesen Link buchen (schon ab 1€/Monat verfügbar!):  
-[EN] To support this script and future development, you can book your VPS via this link (available starting at 1€/month!):
+A powerful solution to make Storj nodes behind IPv6 connections (DS-Lite) accessible via a cheap IPv4 VPS. Optimized for maximum performance with **TCP** and **QUIC (UDP)**.
 
-👉 **[Get a cheap 1€ VPS at IONOS / Günstigen 1€ VPS bei IONOS sichern](https://acn.ionos.de/aff_c?offer_id=2&aff_id=11294&url_id=64)**  
-*(Affiliate Link - Thank you for your support! / Danke für deine Unterstützung!)*
+### 💎 Support the Project
+To support this script and future development, you can book your VPS via this link (available starting at only **1€/month**!):
 
----
+👉 **[Get a cheap 1€ VPS at IONOS](https://acn.ionos.de/aff_c?offer_id=2&aff_id=11294&url_id=64)**  
+*(Affiliate Link - Thank you for your support!)*
 
-## 🚀 Features
+### 🚀 Features
+- **TCP & QUIC (UDP) Support:** Optimized forwarding for maximum rewards.
+- **Reboot-ready:** Automatic `systemd` services ensure permanent accessibility after a VPS restart.
+- **Firewall Automation:** Automatically detects and configures `ufw`, `firewalld`, or `iptables`.
+- **Idempotent:** Script can be safely re-run at any time to update or fix settings.
 
--   **[DE] TCP & QUIC (UDP) Support:** Optimierte Weiterleitung für maximale Einnahmen.
--   **[EN] TCP & QUIC (UDP) Support:** Optimized forwarding for maximum rewards.
--   **[DE] Reboot-sicher:** Automatische `systemd`-Dienste sorgen für dauerhafte Erreichbarkeit.
--   **[EN] Reboot-ready:** Automatic `systemd` services ensure permanent accessibility.
--   **[DE] Firewall-Automatisierung:** Erkennt und konfiguriert `ufw`, `firewalld` oder `iptables` automatisch.
--   **[EN] Firewall Automation:** Automatically detects and configures `ufw`, `firewalld`, or `iptables`.
--   **[DE] Idempotent:** Skript kann jederzeit sicher neu ausgeführt werden.
--   **[EN] Idempotent:** Script can be safely re-run at any time.
-
----
-
-## 🛠️ Installation (One-Liner)
-
-[DE] Logge dich per SSH auf deinen VPS ein und führe diesen Befehl aus:  
-[EN] Log in to your VPS via SSH and run this command:
+### 🛠️ Installation (One-Liner)
+Log in to your VPS via SSH and run this command:
 
 ```bash
 wget -O storj-bridge.sh https://raw.githubusercontent.com/Jumperbillijumper/Storj-IPv4-IPv6-Bridge/main/storj-bridge.sh && chmod +x storj-bridge.sh && sudo ./storj-bridge.sh
 ```
 
----
+### 📝 Configuration Checklist
+1. **Storj Node (Home):**
+   - Add your IPv6 address to `config.yaml`.
+   - Open port (Default: 28967) in local firewall (Windows/Linux) for **IPv6**.
+2. **Router (e.g. FritzBox):**
+   - Create IPv6 port sharing for the device (TCP & UDP).
+3. **VPS (Hoster Dashboard):**
+   - **IMPORTANT:** Open the port for **TCP** and **UDP** in your hoster's web panel (e.g., Oracle Security Lists, IONOS Firewall). The script cannot control the external firewall of your provider.
 
-## 📝 Configuration Checklist / Konfigurations-Checkliste
-
-### 1. Storj Node (Home)
--   **[DE]** IPv6-Adresse in der `config.yaml` hinterlegen.
--   **[EN]** Add your IPv6 address to `config.yaml`.
--   **[DE]** Port (Standard: 28967) in der lokalen Firewall (Windows/Linux) für **IPv6** freigeben.
--   **[EN]** Open port (Default: 28967) in local firewall (Windows/Linux) for **IPv6**.
-
-### 2. Router (e.g. FritzBox)
--   **[DE]** IPv6-Freigabe für das Gerät erstellen (TCP & UDP).
--   **[EN]** Create IPv6 port sharing for the device (TCP & UDP).
-
-### 3. VPS (Hoster Dashboard)
--   **[DE] WICHTIG:** Öffne den Port für **TCP** und **UDP** im Web-Panel deines Hosters (z.B. Oracle Security Lists, IONOS Firewall).
--   **[EN] IMPORTANT:** Open the port for **TCP** and **UDP** in your hoster's web panel (e.g., Oracle Security Lists, IONOS Firewall).
-
----
-
-## 🔍 Troubleshooting (QUIC)
-
-[DE] QUIC (UDP) braucht oft bis zu 60 Minuten, um im Dashboard "OK" anzuzeigen. Prüfe den Dienst-Status:  
-[EN] QUIC (UDP) often takes up to 60 minutes to show "OK" in the dashboard. Check the service status:
-
+### 🔍 Troubleshooting (QUIC)
+QUIC (UDP) often takes up to 60 minutes to show "OK" in the dashboard. Check the service status:
 ```bash
 systemctl status storj-tcp-28967
 systemctl status storj-udp-28967
 ```
 
+### 🤝 Community & Support
+Created by [Jumperbillijumper](https://youtube.com/@Jumperbillijumper).
+
 ---
 
-## 🤝 Community & Support
+<a name="deutsche-version"></a>
+## Deutsche Version
 
-[DE] Erstellt von [Jumperbillijumper](https://youtube.com/@Jumperbillijumper).  
-[EN] Created by [Jumperbillijumper](https://youtube.com/@Jumperbillijumper).
+Eine leistungsstarke Lösung, um Storj-Nodes hinter IPv6-Anschlüssen (DS-Lite) über einen günstigen IPv4-VPS erreichbar zu machen. Optimiert für maximale Performance mit **TCP** und **QUIC (UDP)**.
+
+### 💎 Unterstütze das Projekt
+Um dieses Skript und zukünftige Entwicklungen zu unterstützen, kannst du deinen VPS über diesen Link buchen (schon ab **1€/Monat** verfügbar!):
+
+👉 **[Günstigen 1€ VPS bei IONOS sichern](https://acn.ionos.de/aff_c?offer_id=2&aff_id=11294&url_id=64)**  
+*(Affiliate Link - Danke für deine Unterstützung!)*
+
+### 🚀 Features
+- **TCP & QUIC (UDP) Support:** Optimierte Weiterleitung für maximale Einnahmen.
+- **Reboot-sicher:** Automatische `systemd`-Dienste sorgen für dauerhafte Erreichbarkeit nach einem VPS-Neustart.
+- **Firewall-Automatisierung:** Erkennt und konfiguriert `ufw`, `firewalld` oder `iptables` automatisch.
+- **Idempotent:** Skript kann jederzeit sicher neu ausgeführt werden, um Einstellungen zu aktualisieren oder zu reparieren.
+
+### 🛠️ Installation (One-Liner)
+Logge dich per SSH auf deinen VPS ein und führe diesen Befehl aus:
+
+```bash
+wget -O storj-bridge.sh https://raw.githubusercontent.com/Jumperbillijumper/Storj-IPv4-IPv6-Bridge/main/storj-bridge.sh && chmod +x storj-bridge.sh && sudo ./storj-bridge.sh
+```
+
+### 📝 Konfigurations-Checkliste
+1. **Storj Node (Zuhause):**
+   - IPv6-Adresse in der `config.yaml` hinterlegen.
+   - Port (Standard: 28967) in der lokalen Firewall (Windows/Linux) für **IPv6** freigeben.
+2. **Router (z.B. FritzBox):**
+   - IPv6-Freigabe für das Gerät erstellen (TCP & UDP).
+3. **VPS (Hoster Dashboard):**
+   - **WICHTIG:** Öffne den Port für **TCP** und **UDP** im Web-Panel deines Hosters (z.B. Oracle Security Lists, IONOS Firewall). Das Skript kann diese externe Firewall nicht steuern!
+
+### 🔍 Troubleshooting (QUIC)
+QUIC (UDP) braucht oft bis zu 60 Minuten, um im Dashboard "OK" anzuzeigen. Prüfe den Dienst-Status:
+```bash
+systemctl status storj-tcp-28967
+systemctl status storj-udp-28967
+```
+
+### 🤝 Community & Support
+Erstellt von [Jumperbillijumper](https://youtube.com/@Jumperbillijumper).
 
 ---
 
