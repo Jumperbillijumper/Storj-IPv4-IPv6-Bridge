@@ -116,8 +116,8 @@ After=network.target
 
 [Service]
 Type=simple
-# QUIC Optimierung: fork erlaubt parallele Streams, reuseaddr verhindert Bind-Fehler
-ExecStart=/usr/bin/socat UDP4-LISTEN:${STORJ_PORT},fork,reuseaddr UDP6:[${STORJ_IPV6}]:${STORJ_PORT}
+# QUIC Optimierung: fork erlaubt parallele Streams, reuseaddr/reuseport verhindert Bind-Fehler
+ExecStart=/usr/bin/socat UDP4-LISTEN:${STORJ_PORT},fork,reuseaddr,reuseport UDP6:[${STORJ_IPV6}]:${STORJ_PORT}
 Restart=always
 RestartSec=10
 
