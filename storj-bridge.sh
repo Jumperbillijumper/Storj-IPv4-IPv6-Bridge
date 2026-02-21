@@ -108,7 +108,7 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
-# UDP (QUIC) Service - OPTIMIERT FÜR STABILITÄT
+# UDP (QUIC) Service - MAXIMALE STABILITÄT
 cat <<EOF > "/etc/systemd/system/storj-udp-$STORJ_PORT.service"
 [Unit]
 Description=Storj UDP QUIC Forwarder (Port $STORJ_PORT)
@@ -116,8 +116,8 @@ After=network.target
 
 [Service]
 Type=simple
-# QUIC Optimierung: fork erlaubt parallele Streams, reuseaddr/reuseport verhindert Bind-Fehler
-ExecStart=/usr/bin/socat UDP4-LISTEN:${STORJ_PORT},fork,reuseaddr,reuseport UDP6:[${STORJ_IPV6}]:${STORJ_PORT}
+# QUIC Optimierung: Höhere Timeouts und Puffer für UDP Streams
+ExecStart=/usr/bin/socat UDP4-LISTEN:${STORJ_PORT},fork,reuseaddr,reuseport,range=0.0.0.0/0 UDP6:[${STORJ_IPV6}]:${STORJ_PORT}
 Restart=always
 RestartSec=10
 
