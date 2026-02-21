@@ -108,7 +108,7 @@ RestartSec=10
 WantedBy=multi-user.target
 EOF
 
-# UDP (QUIC) Service - ROBUSTES FORWARDING
+# UDP (QUIC) Service - EXPERTEN MODUS (UDP4-RECVFROM)
 cat <<EOF > "/etc/systemd/system/storj-udp-$STORJ_PORT.service"
 [Unit]
 Description=Storj UDP QUIC Forwarder (Port $STORJ_PORT)
@@ -116,8 +116,8 @@ After=network.target
 
 [Service]
 Type=simple
-# QUIC Optimierung: Benutze feste Puffer und reuseaddr
-ExecStart=/usr/bin/socat UDP4-LISTEN:${STORJ_PORT},fork,reuseaddr,reuseport UDP6:[${STORJ_IPV6}]:${STORJ_PORT}
+# QUIC Optimierung: RECVFROM/SENDTO ist oft stabiler fÃ¼r Sessions
+ExecStart=/usr/bin/socat -T 60 UDP4-RECVFROM:${STORJ_PORT},fork,reuseaddr,reuseport UDP6-SENDTO:[${STORJ_IPV6}]:${STORJ_PORT}
 Restart=always
 RestartSec=5
 
