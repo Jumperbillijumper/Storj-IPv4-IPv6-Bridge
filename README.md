@@ -30,7 +30,7 @@ wget -O storj-bridge.sh https://raw.githubusercontent.com/Jumperbillijumper/Stor
 
 ### 📝 Configuration Checklist
 1. **Storj Node (Home):**
-   - Add your IPv6 address to `config.yaml`.
+   - In `config.yaml`, set `contact.external-address` to your **VPS IPv4 and Port** (e.g., `1.2.3.4:28967`).
    - Open port (Default: 28967) in local firewall (Windows/Linux) for **IPv6**.
 2. **Router (e.g. FritzBox):**
    - Create IPv6 port sharing for the device (TCP & UDP).
@@ -75,7 +75,7 @@ wget -O storj-bridge.sh https://raw.githubusercontent.com/Jumperbillijumper/Stor
 
 ### 📝 Konfigurations-Checkliste
 1. **Storj Node (Zuhause):**
-   - IPv6-Adresse in der `config.yaml` hinterlegen.
+   - In der `config.yaml` muss unter `contact.external-address` die **IPv4-Adresse deines V-Servers** inkl. Port stehen (z.B. `1.2.3.4:28967`).
    - Port (Standard: 28967) in der lokalen Firewall (Windows/Linux) für **IPv6** freigeben.
 2. **Router (z.B. FritzBox):**
    - IPv6-Freigabe für das Gerät erstellen (TCP & UDP).
